@@ -1,4 +1,4 @@
-package com.cms.CustomerManagementSystem.model;
+package com.cms.CustomerManagementSystem.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.NonNull;

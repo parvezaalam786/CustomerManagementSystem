@@ -1,7 +1,6 @@
 package com.cms.CustomerManagementSystem.service;
 
-import com.cms.CustomerManagementSystem.model.Customer;
-import org.springframework.stereotype.Service;
+import com.cms.CustomerManagementSystem.model.entity.Customer;
 
 import java.util.List;
 

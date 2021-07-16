@@ -1,6 +1,6 @@
 package com.cms.CustomerManagementSystem.repository;
 
-import com.cms.CustomerManagementSystem.model.Customer;
+import com.cms.CustomerManagementSystem.model.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
