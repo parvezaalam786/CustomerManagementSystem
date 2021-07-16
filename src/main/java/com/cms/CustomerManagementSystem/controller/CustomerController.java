@@ -3,11 +3,13 @@ package com.cms.CustomerManagementSystem.controller;
 import com.cms.CustomerManagementSystem.exception.response.CMSResponse;
 import com.cms.CustomerManagementSystem.model.entity.Customer;
 import com.cms.CustomerManagementSystem.service.CustomerService;
+import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@Builder
 @RestController
 @RequestMapping("/customers")
 public class CustomerController {
@@ -17,41 +19,46 @@ public class CustomerController {
 
     @PostMapping("/add")
     public ResponseEntity<Object> addCustomer(@RequestBody Customer customer) {
-        CMSResponse response = new CMSResponse(); // we can replace this by builder patterns
-        response.setMessage("Successfully added customer");
-        response.setData(customerService.addCustomer(customer));
+        CMSResponse response = CMSResponse.builder()
+                .message("Successfully added customer")
+                .data(customerService.addCustomer(customer))
+                .build();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @GetMapping
     public ResponseEntity<Object> getAllCustomer() {
-        CMSResponse response = new CMSResponse();
-        response.setMessage("Successfully fetched all customers");
-        response.setData(customerService.getAllCustomers());
+        CMSResponse response = CMSResponse.builder()
+                .message("Successfully fetched all customers")
+                .data(customerService.getAllCustomers())
+                .build();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @GetMapping("/{customerId}")
     public ResponseEntity<Object> getCustomer(@PathVariable("customerId") int customerId) {
-        CMSResponse response = new CMSResponse();
-        response.setMessage("Successfully fetched customer");
-        response.setData(customerService.getCustomer(customerId));
+        CMSResponse response = CMSResponse.builder()
+                .message("Successfully fetched customer")
+                .data(customerService.getCustomer(customerId))
+                .build();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PutMapping
     public ResponseEntity<Object> updateCustomer(@RequestBody Customer customer) {
-        CMSResponse response = new CMSResponse();
-        response.setMessage("Successfully updated customer details");
-        response.setData(customerService.updateCustomer(customer));
+        CMSResponse response = CMSResponse.builder()
+                .message("Successfully updated customer details")
+                .data(customerService.updateCustomer(customer))
+                .build();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @DeleteMapping("/{customerId}")
     public ResponseEntity<Object> deleteCustomer(@PathVariable("customerId") int customerId) {
         customerService.deleteCustomer(customerId);
-        CMSResponse response = new CMSResponse();
-        response.setMessage("Successfully deleted customer");
+        CMSResponse response = CMSResponse.builder()
+                .message("Successfully deleted customer")
+                .build();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
